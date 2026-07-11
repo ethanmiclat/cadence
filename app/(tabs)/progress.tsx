@@ -49,7 +49,13 @@ export default function Progress() {
 
   return (
     <Screen title="Progress">
-      <Card>
+      <HistorySection
+        data={{ plans, logs, workouts, weighIns, shoppingLog, customSplits }}
+        targetCalories={targets.calories}
+        units={profile.units}
+      />
+
+      <Card style={{ marginTop: spacing.md }}>
         <WeightChart weighIns={weighIns} goalKg={profile.goalWeightKg} units={profile.units} />
         <View style={{ flexDirection: 'row', marginTop: spacing.lg, gap: spacing.md }}>
           <Stat label="CURRENT" value={formatWeight(currentKg, profile.units, 1)} />
@@ -63,12 +69,6 @@ export default function Progress() {
           />
         </View>
       </Card>
-
-      <HistorySection
-        data={{ plans, logs, workouts, weighIns, shoppingLog, customSplits }}
-        targetCalories={targets.calories}
-        units={profile.units}
-      />
 
       <SectionTitle>Log a weigh-in</SectionTitle>
       <Card style={{ padding: spacing.md }}>
